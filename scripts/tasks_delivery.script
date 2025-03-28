@@ -80,7 +80,6 @@ xr_effects.on_init_delivery_task = function(actor,npc,p)
 			additionalBlacklist = northernMaps
 		elseif northernMaps[level.name()] then -- Player is in the Northern region and rightfully so
 			additionalBlacklist = blacklist_helper.GetSouthernMaps()
-			FileLogger.log("Blacklisting south")
 		end
 		--[[
 			SERIOUS NO NORTH TASKS BEFORE BS
@@ -113,7 +112,7 @@ xr_effects.on_init_delivery_task = function(actor,npc,p)
 					if squad and (squad:commander_id() == se_obj.id) and sfind(squad:section_name(),"sim_squad") and (squad.current_action == 1) then
 						-- Search in far/nearby locations. Exclude same level, blacklisted areas and undergrounds
 						local lvl_name = sim:level_name( gg:vertex(se_obj.m_game_vertex_id):level_id())
-						if (not blacklisted_maps[lvl_name] and not additionalBlacklist[lvl_name]) and (not simulation_objects.is_on_the_same_level(sim:actor(), se_obj)) then
+						if not blacklisted_maps[lvl_name] and not additionalBlacklist[lvl_name] and not simulation_objects.is_on_the_same_level(sim:actor(), se_obj) then
 							if far_location and (not simulation_objects.is_on_the_linked_level(sim:actor(), se_obj)) then 
 								targets[#targets + 1] = i
 							elseif (not far_location) then
@@ -157,12 +156,7 @@ xr_effects.on_init_delivery_task = function(actor,npc,p)
 	}
 	save_var(db.actor, var, tbl)
 	printdbg("- %s | on_init_delivery_task | giver_comm: %s - target_id: %s - item_1_sec: %s - lvl_task: %s - lvl_target: %s", var, task_giver_comm, target_id, item_1_sec, level_task, level_target)
-	
-	for index, value in ipairs(targets) do
-		
-	end
 
-	FileLogger.log()
 	-- Show info
 	local function postpone_for_next_frame(target_id)
 		local news_caption = game.translate_string(task_manager.task_ini:r_string_ex(p[1], "title")) or "error"
