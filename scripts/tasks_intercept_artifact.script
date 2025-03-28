@@ -137,6 +137,8 @@ xr_conditions.intercept_artifact_check = function(actor,npc,p)
             SERIOUS NO NORTH TASKS BEFORE BS
             AND THE NORTHERN JOB
         --]]
+        local northernMaps = blacklist_helper.GetNorthernMaps()
+        
         if blacklist_helper.ShouldBlacklistNorth() then
             scanned_maps = "southern_maps"
         elseif northernMaps[level.name()] then -- Player is in the Northern region and rightfully so

@@ -71,6 +71,8 @@ xr_effects.drx_sl_create_quest_stash = function( actor, npc, p )
 		
 		local rerollStash = false
 		local blacklistedMaps = {}
+		local northernMaps = blacklist_helper.GetNorthernMaps()
+		
 		if blacklist_helper.ShouldBlacklistNorth() then
 			blacklistedMaps = blacklist_helper.GetNorthernMaps()
 		elseif northernMaps[level.name()] then -- Player is in the Northern region and rightfully so
