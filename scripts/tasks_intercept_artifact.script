@@ -171,7 +171,7 @@ xr_effects.dispatch_intercept_artifact_task_details = function(actor, npc, p)
             "\\n " .. game.translate_string("nta_intercept_item") .. " " .. game.translate_string("st_" .. rolled_artifact[task_id] .. "_name")
         local news_ico = task_manager.task_ini:r_string_ex(task_id, "icon")
 
-        db.actor:give_talk_message2(news_caption, news_text, news_ico, "iconed_answer_item")
+        db.actor:give_talk_message2(news_caption, news_text, news_ico, "iconed_answer_item", task_id)
         return true
     end)
 end

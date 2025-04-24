@@ -192,7 +192,7 @@ function postpone_for_next_frame(task_id, squad_id)
 			news_ico = task_manager.task_ini:r_string_ex(task_id, "icon") or "ui_iconsTotal_mutant"
 		end
 
-		db.actor:give_talk_message2(news_caption, news_text, news_ico, "iconed_answer_item")
+		db.actor:give_talk_message2(news_caption, news_text, news_ico, "iconed_answer_item", task_id)
 	end
 	return true
 end

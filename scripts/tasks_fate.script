@@ -191,7 +191,7 @@ xr_effects.on_init_fate_task = function(actor,npc,p)
 		local news_caption = game.translate_string(task_manager.task_ini:r_string_ex(p[1], "title")) or "error"
 		news_caption = utils_data.parse_string_keys(news_caption, { ["freq"]=freq } )
 		local news_text = game.translate_string("st_location") .. " " .. game.translate_string(map)
-		db.actor:give_talk_message2(news_caption, news_text, "ui_inGame2_PD_Torgovets_informatsiey", "iconed_answer_item")
+		db.actor:give_talk_message2(news_caption, news_text, "ui_inGame2_PD_Torgovets_informatsiey", "iconed_answer_item", p[1])
 		return true
 	end
 	CreateTimeEvent(0,"on_init_fate_task",0,postpone_for_next_frame,map,freq)

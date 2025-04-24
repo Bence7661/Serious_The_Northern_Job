@@ -171,7 +171,7 @@ end
 function postpone_for_next_frame(task_id,level_target)
 	local news_caption = game.translate_string(task_manager.task_ini:r_string_ex(task_id, "title")) or "error"
 	local news_text = game.translate_string("st_location") .. " " .. game.translate_string(level_target)
-	db.actor:give_talk_message2(news_caption, news_text, "ui_inGame2_PD_Opitniy_stalker", "iconed_answer_item")
+	db.actor:give_talk_message2(news_caption, news_text, "ui_inGame2_PD_Opitniy_stalker", "iconed_answer_item", task_id)
 	return true
 end
 

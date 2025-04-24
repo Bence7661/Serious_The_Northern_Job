@@ -161,7 +161,7 @@ xr_effects.on_init_delivery_task = function(actor,npc,p)
 	local function postpone_for_next_frame(target_id)
 		local news_caption = game.translate_string(task_manager.task_ini:r_string_ex(p[1], "title")) or "error"
 		local news_text = game.translate_string("st_mm_new_game_name") .. " " .. se_target:character_name() .. "\\n " .. game.translate_string("st_mm_new_game_faction_2") .. " " .. game.translate_string(se_target:community()) .. "\\n " .. game.translate_string("st_location") .. " " .. game.translate_string(level_target)
-		db.actor:give_talk_message2(news_caption, news_text, se_target:character_icon(), "iconed_answer_item")
+		db.actor:give_talk_message2(news_caption, news_text, se_target:character_icon(), "iconed_answer_item", p[1])
 		return true
 	end
 	CreateTimeEvent(0,"on_init_delivery_task",0,postpone_for_next_frame,target_id)

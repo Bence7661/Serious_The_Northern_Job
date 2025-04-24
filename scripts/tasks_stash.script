@@ -109,7 +109,7 @@ xr_effects.drx_sl_create_quest_stash = function( actor, npc, p )
 		local news_caption = game.translate_string(task_manager.task_ini:r_string_ex(p[1], "title")) or "error"
 		local news_icon = task_manager.task_ini:r_string_ex(p[1], "icon") or "ui_inGame2_Poslednie_razrabotki"
 		local news_text = game.translate_string("st_location") .. " " .. game.translate_string(level_target)
-		db.actor:give_talk_message2(news_caption, news_text, news_icon, "iconed_answer_item")
+		db.actor:give_talk_message2(news_caption, news_text, news_icon, "iconed_answer_item", p[1])
 		return true
 	end
 	CreateTimeEvent(0,"setup_bounty_task",0,postpone_for_next_frame)
